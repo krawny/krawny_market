@@ -9,17 +9,16 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
+@Mapper(componentModel = "spring" , uses = {CategoryMapper.class})
 public interface ProductMapper {
 
     @Mappings({
             @Mapping(source = "idProduct", target = "productId"),
-            //@Mapping(source = "name", target = "name"),
             @Mapping(source = "idCategory", target = "categoryId"),
             @Mapping(source = "priceSale", target = "price"),
             @Mapping(source = "stockQuantity", target = "stock"),
             @Mapping(source = "status", target = "active"),
-            //@Mapping(source = "category", target = "category"),
+            @Mapping(source = "category", target = "category"),
     })
     DomainProduct toDomainProduct(Product product);
     List<DomainProduct> toDomainProducts(List<Product> productList);

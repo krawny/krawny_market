@@ -21,38 +21,38 @@ public class ProductRepository implements DomainProductRepository {
     private ProductMapper productMapper;
 
     @Override
-    public List<DomainProduct> getAll(){
+    public List<DomainProduct> getAll() {
         List<Product> productList = (List<Product>) productCrudRepository.findAll();
         return productMapper.toDomainProducts(productList);
     }
 
     @Override
-    public Optional<List<DomainProduct>> getByIdCategory(Integer idCategory){
+    public Optional<List<DomainProduct>> getByIdCategory(Integer idCategory) {
         List<Product> productList = productCrudRepository.findByIdCategoryOrderByNameAsc(idCategory);
         return Optional.of(productMapper.toDomainProducts(productList));
     }
 
     @Override
-    public Optional<List<DomainProduct>> getLowStock(Integer quantity){
+    public Optional<List<DomainProduct>> getLowStock(Integer quantity) {
         Optional<List<Product>> productList = productCrudRepository.findByStockQuantityLessThanAndStatus(quantity, true);
         return productList.map(pList -> productMapper.toDomainProducts(pList));
     }
 
     @Override
-    public Optional<DomainProduct> getProduct(Integer idProduct){
+    public Optional<DomainProduct> getProduct(Integer idProduct) {
         return productCrudRepository.findById(idProduct)
-                .map(product ->productMapper.toDomainProduct(product));
+                .map(product -> productMapper.toDomainProduct(product));
     }
 
     @Override
-    public DomainProduct save(DomainProduct domainProduct){
+    public DomainProduct save(DomainProduct domainProduct) {
         Product product = productMapper.toProduct(domainProduct);
         return productMapper.toDomainProduct(productCrudRepository.save(product));
 
     }
 
     @Override
-    public void delete(Integer idProduct){
+    public void delete(Integer idProduct) {
         productCrudRepository.deleteById(idProduct);
     }
 

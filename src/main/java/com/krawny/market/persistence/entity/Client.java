@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name="cliente")
+@Table(name="clientes")
 public class Client {
 
     @Id
@@ -20,16 +20,16 @@ public class Client {
     private String name;
 
     @Column(name="apellidos")
-    private boolean lastName;
+    private String lastName;
 
     @Column(name="celular")
-    private boolean cellPhone;
+    private Long cellPhone;
 
     @Column(name="direccion")
-    private boolean dir;
+    private String dir;
 
     @Column(name="correo_electronico")
-    private Boolean email;
+    private String email;
 
     @OneToMany(mappedBy = "client")
     private List<Purchase> purchaseList;
