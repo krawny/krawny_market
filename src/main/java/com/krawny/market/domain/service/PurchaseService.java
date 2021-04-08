@@ -14,15 +14,15 @@ public class PurchaseService {
     @Autowired
     private DomainPurchaseRepository domainPurchaseRepository;
 
-    public List<DomainPurchase> getAll(){
+    public List<DomainPurchase> getAll() {
         return domainPurchaseRepository.getAll();
     }
 
-    public Optional<List<DomainPurchase>> getByClient(String clientId){
+    public Optional<List<DomainPurchase>> getByClient(String clientId) {
         return domainPurchaseRepository.getByClient(clientId);
     }
 
-    public DomainPurchase save(DomainPurchase domainPurchase){
+    public DomainPurchase save(DomainPurchase domainPurchase) {
         return domainPurchaseRepository.save(domainPurchase);
     }
 }
